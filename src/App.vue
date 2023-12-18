@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <!-- Компонент на всю ширину экрана с выравниванием по левому краю -->
+    <TagList :tags="tags" alignment="left"></TagList>
+
+    <!-- Компонент на всю ширину экрана с выравниванием по ширине -->
+    <TagList :tags="tags" alignment="justify"></TagList>
+
+    <!-- Компонент на 50% ширины экрана с выравниванием по левому краю -->
+    <div style="width: 50%;">
+      <TagList :tags="tags" alignment="left"></TagList>
+    </div>
+
+    <!-- Компонент на 50% ширины экрана с выравниванием по ширине -->
+    <div style="width: 50%;">
+      <TagList :tags="tags" alignment="justify"></TagList>
+    </div>
+
+    <!-- <v-btn color="primary">Пример кнопки Vuetify</v-btn>
+    <v-icon>mdi-circle-small</v-icon> -->
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import TagList from "@/components/TagList";
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: {TagList},
+  data() {
+    return {
+      tags: [
+        { text: 'текст1' },
+        { text: 'текст2', icon: 'mdi-circle-small' },
+        // Добавьте нужные теги с текстом и иконками
+      ],
+    };
+  },
+};
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
